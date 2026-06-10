@@ -1,0 +1,9 @@
+../Core/Src/w25q32.c:17:16:W25Q_ReadStatus	16	static
+../Core/Src/w25q32.c:32:13:W25Q_WaitBusy	8	static
+../Core/Src/w25q32.c:40:13:W25Q_WriteEnable	16	static
+../Core/Src/w25q32.c:53:9:W25Q_Init	4	static
+../Core/Src/w25q32.c:65:10:W25Q_ReadID	16	static
+../Core/Src/w25q32.c:83:6:W25Q_Reset	16	static
+../Core/Src/w25q32.c:95:6:W25Q_Read	32	static
+../Core/Src/w25q32.c:112:6:W25Q_WritePage	32	static
+../Core/Src/w25q32.c:133:6:W25Q_EraseSector	24	static
