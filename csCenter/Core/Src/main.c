@@ -567,43 +567,43 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
     switch(rxHeader.StdId)
     {
         case 0x112:
-            CAN_Parse2Float(data, &yaw, &pitch);
+            CAN_Parse2Float(data, &sensorData.yaw, &sensorData.pitch);
             break;
 
         case 0x113:
         {
-            CAN_Parse2Float(data, &roll, &val2);
+            CAN_Parse2Float(data, &sensorData.roll, &val2);
 
             uint32_t hm = (uint32_t)val2;
 
-            rtcHour = hm / 100;
-            rtcMinute = hm % 100;
+            sensorData.rtcHour = hm / 100;
+            sensorData.rtcMinute = hm % 100;
 
             break;
         }
 
         case 0x114:
-            CAN_Parse2Float(data, &accX, &accY);
+            CAN_Parse2Float(data, &sensorData.accX, &sensorData.accY);
             break;
 
         case 0x115:
         {
-            CAN_Parse2Float(data, &accZ, &val2);
+            CAN_Parse2Float(data, &sensorData.accZ, &val2);
 
             uint32_t sm = (uint32_t)val2;
 
-            rtcSecond = sm / 1000;
-            rtcMs = sm % 1000;
+            sensorData.rtcSecond = sm / 1000;
+            sensorData.rtcMs = sm % 1000;
 
             break;
         }
 
         case 0x122:
-            CAN_Parse2Float(data, &pressure, &temperature);
+            CAN_Parse2Float(data, &sensorData.pressure, &sensorData.temperature);
             break;
 
         case 0x123:
-            CAN_Parse2Float(data, &altitude, &val1);
+            CAN_Parse2Float(data, &sensorData.altitude, &val1);
             break;
 
         case 0x132:
@@ -611,13 +611,13 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
             break;
 
         case 0x133:
-            CAN_Parse2Float(data, &gpsAltitude, &satelliteCount);
+            CAN_Parse2Float(data, &sensorData.gpsAltitude, &sensorData.satelliteCount);
             break;
 
         case 0x142:
             CAN_Parse2Float(data,
-                            &busVoltageFloat,
-                            &currentFloat);
+                            &sensorData.busVoltageFloat,
+                            &sensorData.currentFloat);
             break;
     }
 }

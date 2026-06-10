@@ -80,7 +80,7 @@ void Error_Handler(void);
 typedef struct {
 	uint8_t rtcHour, rtcMinute, rtcSecond;
 	uint16_t rtcMs;
-	float pitch, roll, yaw, altitude, pressure, temperature,
+	float pitch, roll, yaw, altitude, pressure, temperature, busVoltageFloat, currentFloat,
 		  accX, accY, accZ, latitude, longitude, satelliteCount, gpsAltitude;
 } SensorData;
 /* USER CODE END Private defines */

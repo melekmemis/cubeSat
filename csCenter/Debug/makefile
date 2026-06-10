@@ -64,8 +64,8 @@ all: main-build
 main-build: csCenter.elf secondary-outputs
 
 # Tool invocations
-csCenter.elf csCenter.map: $(OBJS) $(USER_OBJS) C:\Users\memis\STM32CubeIDE\workspace_1.18.1\csCenter\STM32F405RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "csCenter.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\memis\STM32CubeIDE\workspace_1.18.1\csCenter\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="csCenter.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
+csCenter.elf csCenter.map: $(OBJS) $(USER_OBJS) C:\Users\memis\STM32CubeIDE\workspace_1.18.1\cubeSat\csCenter\STM32F405RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "csCenter.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\memis\STM32CubeIDE\workspace_1.18.1\cubeSat\csCenter\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="csCenter.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -u _scanf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
