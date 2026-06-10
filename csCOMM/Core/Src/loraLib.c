@@ -50,7 +50,7 @@ void LoraConfigure(void) {
     HAL_Delay(100);
 
     HAL_UART_Transmit(&huart6, config, sizeof(config), HAL_MAX_DELAY);
-    HAL_Delay(100);  // Modül cevap için zaman ister
+    HAL_Delay(100);
 
     HAL_UART_Receive(&huart6, response, sizeof(response), 500);
 

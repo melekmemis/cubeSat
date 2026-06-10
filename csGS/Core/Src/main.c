@@ -73,7 +73,10 @@ typedef struct {
     float angleX;
     float angleY;
     float angleZ;
-    uint8_t durum;
+    float SCVoltage;
+    float SCCurrent;
+    float CCVoltage;
+    float CCCurrent;
 } SensorData;
 #pragma pack()
 
@@ -99,8 +102,8 @@ void packCSDatas(void){
 	        "%d*%d*%d*"
 	        "%.2f*%.2f*%.2f*"
 	        "%.2f*%.2f*%.2f*"
-	        "%.2f*%.2f*%.2f*"
-	        "%d"
+	        "%.2f*%.2f*%.2f"
+			"%.2f*%.2f*%.2f*%.2f"
 			"CCCC\n",
 
 			receivedData.enlem,
@@ -124,8 +127,10 @@ void packCSDatas(void){
 			receivedData.angleX,
 			receivedData.angleY,
 			receivedData.angleZ,
-
-			receivedData.durum
+			receivedData.SCVoltage,
+			receivedData.SCCurrent,
+			receivedData.CCVoltage,
+			receivedData.CCCurrent
 	);
 }
 
@@ -158,7 +163,7 @@ void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size) {
 
 		    packCSDatas();
 
-		    HAL_UART_Transmit(&huart2, txGSBuffer, sizeof(txGSBuffer), HAL_MAX_DELAY);
+		    HAL_UART_Transmit(&huart2, txGSBuffer, strlen(txGSBuffer), HAL_MAX_DELAY);
 
 			HAL_UARTEx_ReceiveToIdle_DMA(&huart1, buffer, 256);
 			__HAL_DMA_DISABLE_IT(&hdma_usart1_rx, DMA_IT_HT);

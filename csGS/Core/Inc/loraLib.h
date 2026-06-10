@@ -26,7 +26,10 @@ typedef struct {
     float angleX;
     float angleY;
     float angleZ;
-    uint8_t durum;
+    float SCVoltage;
+    float SCCurrent;
+    float CCVoltage;
+    float CCCurrent;
 } SensorDataa;
 #pragma pack()
 

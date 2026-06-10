@@ -60,8 +60,8 @@ all: main-build
 main-build: csCOMM.elf secondary-outputs
 
 # Tool invocations
-csCOMM.elf csCOMM.map: $(OBJS) $(USER_OBJS) C:\Users\memis\STM32CubeIDE\workspace_1.18.1\csCOMM\STM32F405RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "csCOMM.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\memis\STM32CubeIDE\workspace_1.18.1\csCOMM\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="csCOMM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+csCOMM.elf csCOMM.map: $(OBJS) $(USER_OBJS) C:\Users\memis\STM32CubeIDE\workspace_1.18.1\cubeSat\csCOMM\STM32F405RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "csCOMM.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\memis\STM32CubeIDE\workspace_1.18.1\cubeSat\csCOMM\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="csCOMM.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

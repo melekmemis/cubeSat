@@ -164,7 +164,10 @@ int main(void)
 	  		sensorData.gpsIrtifa = gpsAltitude;
 	  		sensorData.uyduSayisi = satelliteCount;
 	  		sensorData.irtifa = altitude;
-//	  		sensorData.durum = durum;
+	  		sensorData.SCVoltage = busVoltageFloat;
+	  		sensorData.SCCurrent = currentFloat;
+	  		sensorData.CCVoltage = busVoltage2Float;
+	  		sensorData.CCCurrent = current2Float;
 	  		LoraSendData(&huart6, 0x00, 3, 23, &sensorData, sizeof(SensorData));
 	  		HAL_Delay(200);
     /* USER CODE END WHILE */
