@@ -12,8 +12,9 @@ typedef struct {
 	float enlem;
 	float boylam;
 	float gpsIrtifa;
-    float irtifa;
     int uyduSayisi;
+    float irtifa;
+    float basinc;
     int saat;
     int dakika;
     int saniye;

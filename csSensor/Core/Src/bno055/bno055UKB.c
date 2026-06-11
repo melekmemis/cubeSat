@@ -105,15 +105,15 @@ void bno055ReadAngles(void)
     	pitchRaw = pitchRaw + 180;
     }
 
-    pitch = KalmanUpdate(&pitchFilter, pitchRaw);
-    roll = KalmanUpdate(&rollFilter, rollRaw);
-    yaw = KalmanUpdate(&yawFilter, yawRaw);
-    accX = KalmanUpdate(&accXFilter, accXraw);
-    accY = KalmanUpdate(&accYFilter, accYraw);
-    accZ = KalmanUpdate(&accZFilter, accZraw);
-    gyroX = KalmanUpdate(&gyroXFilter, gyroXraw);
-    gyroY = KalmanUpdate(&gyroYFilter, gyroYraw);
-    gyroZ = KalmanUpdate(&gyroZFilter, gyroZraw);
+    pitch = pitchRaw;
+    roll = rollRaw;
+    yaw = yawRaw;
+    accX = accXraw;
+    accY = accYraw;
+    accZ = accZraw;
+    gyroX = gyroXraw;
+    gyroY = gyroYraw;
+    gyroZ = gyroZraw;
 
 //    sensorData.Ax = accX;
 //    sensorData.Ay = accY;

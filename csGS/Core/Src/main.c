@@ -59,8 +59,9 @@ typedef struct {
 	float enlem;
 	float boylam;
 	float gpsIrtifa;
-    float irtifa;
     int uyduSayisi;
+    float irtifa;
+    float basinc;
     int saat;
     int dakika;
     int saniye;
@@ -98,7 +99,7 @@ static void MX_USART1_UART_Init(void);
 /* USER CODE BEGIN 0 */
 void packCSDatas(void){
 	sprintf(txGSBuffer,
-	        "%f*%f*%.2f*%.2f*%d*"
+	        "%f*%f*%.2f*%d*%.2f*%.2f*"
 	        "%d*%d*%d*"
 	        "%.2f*%.2f*%.2f*"
 	        "%.2f*%.2f*%.2f*"
@@ -109,8 +110,9 @@ void packCSDatas(void){
 			receivedData.enlem,
 			receivedData.boylam,
 			receivedData.gpsIrtifa,
-			receivedData.irtifa,
 			receivedData.uyduSayisi,
+			receivedData.irtifa,
+			receivedData.basinc,
 
 			receivedData.saat,
 			receivedData.dakika,

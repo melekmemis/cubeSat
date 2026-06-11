@@ -63,8 +63,8 @@ all: main-build
 main-build: csSensor.elf secondary-outputs
 
 # Tool invocations
-csSensor.elf csSensor.map: $(OBJS) $(USER_OBJS) C:\Users\memis\STM32CubeIDE\workspace_1.18.1\csSensor\STM32F405RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "csSensor.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\memis\STM32CubeIDE\workspace_1.18.1\csSensor\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="csSensor.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+csSensor.elf csSensor.map: $(OBJS) $(USER_OBJS) C:\Users\memis\STM32CubeIDE\workspace_1.18.1\cubeSat\csSensor\STM32F405RGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "csSensor.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\memis\STM32CubeIDE\workspace_1.18.1\cubeSat\csSensor\STM32F405RGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="csSensor.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
