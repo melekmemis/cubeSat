@@ -42,7 +42,7 @@ INA219_t ina219;
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-#define RECIEVER_ADDRESS 3
+#define RECIEVER_ADDRESS 7
 #define RECIEVER_CHANNEL 27
 /* USER CODE END PM */
 
