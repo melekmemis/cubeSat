@@ -78,6 +78,8 @@ typedef struct {
     float SCCurrent;
     float CCVoltage;
     float CCCurrent;
+    float COMMCVoltage;
+    float COMMCCurrent;
 } SensorData;
 #pragma pack()
 
@@ -104,7 +106,7 @@ void packCSDatas(void){
 	        "%.2f*%.2f*%.2f*"
 	        "%.2f*%.2f*%.2f*"
 	        "%.2f*%.2f*%.2f"
-			"%.2f*%.2f*%.2f*%.2f"
+			"%.2f*%.2f*%.2f*%.2f*%.2f*%.2f"
 			"CCCC\n",
 
 			receivedData.enlem,
@@ -132,7 +134,9 @@ void packCSDatas(void){
 			receivedData.SCVoltage,
 			receivedData.SCCurrent,
 			receivedData.CCVoltage,
-			receivedData.CCCurrent
+			receivedData.CCCurrent,
+			receivedData.COMMCVoltage,
+			receivedData.COMMCCurrent
 	);
 }
 

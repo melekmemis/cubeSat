@@ -31,6 +31,8 @@ typedef struct {
     float SCCurrent;
     float CCVoltage;
     float CCCurrent;
+    float COMMCVoltage;
+    float COMMCCurrent;
 } SensorDataa;
 #pragma pack()
 

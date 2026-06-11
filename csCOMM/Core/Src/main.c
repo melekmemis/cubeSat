@@ -24,6 +24,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "loraLib.h"
+#include "INA219.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -35,11 +36,14 @@
 /* USER CODE BEGIN PD */
 RTC_TimeTypeDef sTime = {0};
 RTC_DateTypeDef sDate = {0};
+
+INA219_t ina219;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+#define RECIEVER_ADDRESS 3
+#define RECİEVER_CHANNEL 27
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -80,6 +84,11 @@ uint16_t rtc2Ms;
 
 float busVoltage2Float;
 float current2Float;
+
+/////////////INA219 PV/////////////
+uint8_t inaOK = 0;
+uint16_t busVoltage;
+int16_t current;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -135,6 +144,14 @@ int main(void)
   /* USER CODE BEGIN 2 */
   LoraConfigure();
 
+  //////////////////INA219 Init//////////////////
+  if (INA219_Init(&ina219, &hi2c2, INA219_ADDRESS))
+  {
+      inaOK = 1;
+  } else inaOK = 2;
+
+  INA219_setCalibration_32V_1A(&ina219);
+
   CAN_Filter_Config();
   HAL_CAN_Start(&hcan2);
   HAL_CAN_ActivateNotification(&hcan2, CAN_IT_RX_FIFO0_MSG_PENDING);
@@ -146,6 +163,9 @@ int main(void)
   {
 	  HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
 	  HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BIN);
+
+	  busVoltage = INA219_ReadBusVoltage(&ina219);
+	  current = INA219_ReadCurrent(&ina219);
 	  //
 	  		sensorData.saat = sTime.Hours;
 	  		sensorData.dakika = sTime.Minutes;
@@ -168,7 +188,9 @@ int main(void)
 	  		sensorData.SCCurrent = currentFloat;
 	  		sensorData.CCVoltage = busVoltage2Float;
 	  		sensorData.CCCurrent = current2Float;
-	  		LoraSendData(&huart6, 0x00, 3, 23, &sensorData, sizeof(SensorData));
+	  		sensorData.COMMCVoltage = busVoltage;
+	  		sensorData.COMMCCurrent = current;
+	  		LoraSendData(&huart6, 0x00, RECIEVER_ADDRESS, RECİEVER_CHANNEL, &sensorData, sizeof(SensorData));
 	  		HAL_Delay(200);
     /* USER CODE END WHILE */
 
