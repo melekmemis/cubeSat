@@ -43,7 +43,7 @@ INA219_t ina219;
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 #define RECIEVER_ADDRESS 3
-#define RECİEVER_CHANNEL 27
+#define RECIEVER_CHANNEL 27
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -190,7 +190,7 @@ int main(void)
 	  		sensorData.CCCurrent = current2Float;
 	  		sensorData.COMMCVoltage = busVoltage;
 	  		sensorData.COMMCCurrent = current;
-	  		LoraSendData(&huart6, 0x00, RECIEVER_ADDRESS, RECİEVER_CHANNEL, &sensorData, sizeof(SensorData));
+	  		LoraSendData(&huart6, 0x00, RECIEVER_ADDRESS, RECIEVER_CHANNEL, &sensorData, sizeof(SensorData));
 	  		HAL_Delay(200);
     /* USER CODE END WHILE */
 
